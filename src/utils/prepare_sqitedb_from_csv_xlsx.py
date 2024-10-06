@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from src.utils.load_config import LoadConfig
+from utils.load_config import LoadConfig
 import pandas as pd
 from sqlalchemy import create_engine, inspect
 
