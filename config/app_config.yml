@@ -14,7 +14,7 @@ llm_config:
     "
     rag_llm_system_role: "You will recieve the user's question along with the search results of that question over a database. Give the user the proper answer."
     engine: "gpt-35-turbo"
-    temperature: 0.2
+    temperature: 0.1
 
 rag_config:
   collection_name: titanic_small
