@@ -53,7 +53,12 @@ class LoadConfig:
             api_key=azure_openai_api_key,
             api_version=os.getenv("AZURE_OpenAI_API_VERSION"),
             azure_endpoint=azure_openai_endpoint)
-
+        
+        self.azure_openai_client_chat=AzureOpenAI(
+            api_key=os.getenv('AZURE_OPENAI_API_KEY'),
+                    api_version=os.getenv("AZURE_OpenAI_API_VERSION"),
+                    azure_endpoint=os.getenv('AZURE_OpenAI_ENDPOINT')
+        )
         self.langchain_llm = AzureChatOpenAI(
             openai_api_version=os.getenv("AZURE_OpenAI_API_VERSION"),
             azure_deployment=self.model_name,

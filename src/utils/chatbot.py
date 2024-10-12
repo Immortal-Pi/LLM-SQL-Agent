@@ -12,7 +12,8 @@ from sqlalchemy import create_engine
 from langchain_community.agent_toolkits import create_sql_agent
 import langchain
 langchain.debug = True
-
+from openai import AzureOpenAI
+from dotenv import load_dotenv
 APPCFG = LoadConfig()
 
 
@@ -107,12 +108,14 @@ class ChatBot:
                 prompt = f"User's question: {message} \n\n Search results:\n {results}"
 
                 messages = [
-                    {"role": "system", "content": str(
+                    {'role': 'system', 'content': str(
                         APPCFG.rag_llm_system_role
                     )},
                     {"role": "user", "content": prompt}
                 ]
-                llm_response = APPCFG.azure_openai_client.chat.completions.create(
+                load_dotenv()
+                
+                llm_response =APPCFG.azure_openai_client_chat.chat.completions.create(
                     model=APPCFG.model_name,
                     messages=messages
                 )
