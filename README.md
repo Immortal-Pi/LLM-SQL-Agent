@@ -31,12 +31,14 @@ An application where you can upload the CSV file and it stores the data into SQL
 
 ## Screenshots
 
-![App Screenshot](https://github.com/Immortal-Pi/doc_chat_bot/blob/main/resources/1.png)
+![App Screenshot](https://github.com/Immortal-Pi/LLM-SQL-Agent/blob/main/output/1.png)
 
-![App Screenshot](https://github.com/Immortal-Pi/doc_chat_bot/blob/main/resources/2.png)
+![App Screenshot](https://github.com/Immortal-Pi/LLM-SQL-Agent/blob/main/output/2.png)
 
-![App Screenshot](https://github.com/Immortal-Pi/doc_chat_bot/blob/main/resources/3.png)
+![App Screenshot](https://github.com/Immortal-Pi/LLM-SQL-Agent/blob/main/output/3.png)
 
-![App Screenshot](https://github.com/Immortal-Pi/doc_chat_bot/blob/main/resources/4.png)
+![App Screenshot](https://github.com/Immortal-Pi/LLM-SQL-Agent/blob/main/output/4.png)
 
-![App Screenshot](https://github.com/Immortal-Pi/doc_chat_bot/blob/main/resources/5.png)
+![App Screenshot](https://github.com/Immortal-Pi/LLM-SQL-Agent/blob/main/output/5.png)
+
+![App Screenshot](https://github.com/Immortal-Pi/LLM-SQL-Agent/blob/main/output/6.png)
