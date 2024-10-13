@@ -3,6 +3,7 @@ from typing import List,Tuple
 from utils.load_config import LoadConfig
 from sqlalchemy import create_engine, inspect
 import pandas as pd 
+from  utilsStreamlit.prepare_vectordb_from_csv_xlsx import PrepareVectorDBFromTabularData
 APPCFG=LoadConfig()
 
 
@@ -47,6 +48,9 @@ class ProcessFiles:
         # self.chatbot.append(
         #     (" ","uploaded files are ready. Please ask questions")
         # )
+
+        vector_pipe=PrepareVectorDBFromTabularData(self.dataframe,APPCFG.collection_name)
+        vector_pipe.run_pipeline()
         return ""
         
 

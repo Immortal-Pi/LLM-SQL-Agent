@@ -14,13 +14,14 @@ class PrepareVectorDBFromTabularData:
         file_directory: Path to the csv file that contains data to be uploaded
     """
 
-    def __init__(self,file_directory:str)->None:
+    def __init__(self,dataframe:pd.DataFrame,filename:str)->None:
         """
         file_directory: directory path of the file to be processed
         :param file_directory:
         """
         self.APPCFG=LoadConfig()
-        self.file_directory=file_directory
+        self.dataframe=dataframe
+        self.filename=filename
 
     def _inject_data_into_chromadb(self):
         """
@@ -28,7 +29,7 @@ class PrepareVectorDBFromTabularData:
         error: if collection name already exists
         this method prints confirmation message upon successful data injection
         """
-        collection=self.APPCFG.chroma_client.create_collection(name=self.APPCFG.collection_name)
+        collection=self.APPCFG.chroma_client.get_or_create_collection(name=self.APPCFG.collection_name)
         collection.add(
             documents=self.docs,
             metadatas=self.metadatas,
@@ -42,33 +43,11 @@ class PrepareVectorDBFromTabularData:
         preparing the database from the CSV.
         :return:
         """
-        self.df,self.file_name=self.load_dataframe(file_directory=self.file_directory)
-        self.docs,self.metadatas,self.ids, self.embeddings=self._prepare_data_for_injection(df=self.df,file_name=self.file_name)
+        #self.df,self.dataframe=self.load_dataframe(dataframe=self.dataframe)
+        self.docs,self.metadatas,self.ids, self.embeddings=self._prepare_data_for_injection(df=self.dataframe,file_name=self.APPCFG.collection_name)
         self._inject_data_into_chromadb()
         self.validate_db()
     
-
-
-    def load_dataframe(self,file_directory:str):
-        """
-        load data from csv or excel file
-
-        :param file_directory:
-        :return:
-        """
-        file_name_with_extensions=os.path.basename(file_directory)
-        print(file_name_with_extensions)
-        file_name,file_extension=os.path.splitext(
-            file_name_with_extensions
-        )
-        if file_extension=='.csv':
-            df=df = pd.read_csv(file_directory)
-            return df, file_name
-        elif file_extension == ".xlsx":
-            df = pd.read_excel(file_directory)
-            return df, file_name
-        else:
-            raise ValueError("The selected file type is not supported")
 
     def _prepare_data_for_injection(self,df:pd.DataFrame,file_name:str):
         """
@@ -97,7 +76,7 @@ class PrepareVectorDBFromTabularData:
     
 
     def validate_db(self):
-        vectordb=self.APPCFG.chroma_client.get_collection(name=self.APPCFG.collection_name)
+        vectordb=self.APPCFG.chroma_client.get_collection(name=self.filename)
         print("==============================")
         print("Number of vectors in vectordb:", vectordb.count())
         print("==============================")

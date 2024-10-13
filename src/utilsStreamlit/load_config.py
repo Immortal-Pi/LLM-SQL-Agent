@@ -19,7 +19,7 @@ class LoadConfig:
         self.load_directories(app_config=app_config)
         self.load_llm_configs(app_config=app_config)
         self.load_openai_models()
-        self.load_chroma_client()
+        #self.load_chroma_client()
         self.load_rag_config(app_config=app_config)
 
     def load_directories(self,app_config):

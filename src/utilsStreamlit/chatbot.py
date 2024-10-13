@@ -13,7 +13,9 @@ from langchain_community.agent_toolkits import create_sql_agent
 import langchain
 langchain.debug = True
 from openai import AzureOpenAI
+#from htmlTemplates import css, bot_template, user_template
 from dotenv import load_dotenv
+
 APPCFG = LoadConfig()
 
 
@@ -24,7 +26,7 @@ class ChatBot:
     and use embeddings for Retrieval-Augmented Generation (RAG) with ChromaDB.
     """
     @staticmethod
-    def respond(chatbot: str, message: str, chat_type: str, app_functionality: str):
+    def respond(chatbot: str, message: str, chat_type: str, app_functionality: str,filename='None'):
         """
         Respond to a message based on the given chat and application functionality types.
 
@@ -98,6 +100,7 @@ class ChatBot:
                 response = response["output"]
 
             elif chat_type == "RAG with stored CSV/XLSX ChromaDB":
+                
                 response = APPCFG.azure_openai_client.embeddings.create(
                     input=message,
                     model=APPCFG.embedding_model_name
@@ -124,6 +127,7 @@ class ChatBot:
                     messages=messages
                 )
                 response = llm_response.choices[0].message.content
+                return response
 
             # Get the `response` variable from any of the selected scenarios and pass it to the user.
             # chatbot.append(

@@ -17,5 +17,5 @@ llm_config:
     temperature: 0.0
 
 rag_config:
-  collection_name: titanic_small
+  collection_name: uploaded_files
   top_k: 1

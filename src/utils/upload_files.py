@@ -93,5 +93,6 @@ class UploadFile:
                 file_dir=files_dir,chatbot=chatbot)
             input_txt,chatbot=pipeline_instance.run()
             return input_txt,chatbot
+        
         else:
             pass
