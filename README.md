@@ -10,7 +10,7 @@ An application where you can upload the CSV file and it stores the data into SQL
 #### OpenAI 
 
 ```http
-  Hugging Face
+  AzureOpenAI 
 ```
 
 | Parameter | Type     | Description                |
