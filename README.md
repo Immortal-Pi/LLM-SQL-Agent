@@ -5,7 +5,7 @@
 
 Employee's in a workspace might not be familiar with SQL or programming languages and might know few basic SQL operations. This took enhances their operations by writing queries based on the prompt entered to the chatbot and gives results.
 
-An application where you can upload the CSV file and it stores the data into SQLite database. Impleted langchain SQLAgent for queries and comparing it with RAG results.
+An application where you can upload the CSV file and it stores the data into SQLite database. Impleted langchain SQLAgent for queries. 
 
 This application also compares the results from traditional RAG and SQLAgent.
 
